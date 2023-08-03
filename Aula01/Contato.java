@@ -9,13 +9,6 @@ class Contato {
         this.nome = nome;
     }
 
-    public void getNome(){
-        System.out.println(nome);
-    }
-    public void getTelefone(){
-
-        System.out.println(telefone);
-    }
     public void ligar(){
         System.out.println("Ligando para: " + telefone);
     }

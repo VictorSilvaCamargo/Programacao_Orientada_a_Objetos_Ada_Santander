@@ -16,13 +16,19 @@ public class Agenda {
     }
 
     public void buscar(String nome) {
+        boolean encontrado = false;
         for (Contato contato : contatos) {
             if (contato.nome.equals(nome)) {
-                contato.getTelefone();
-                contato.getNome();
-            } else {
-                System.out.println("Não encontrado");
+                System.out.println("Nome: " + contato.nome);
+                System.out.println("Telefone: " + contato.telefone);
+                encontrado = true;
+                break;
             }
         }
+        if (!encontrado) {
+            System.out.println("Não encontrado");
+        }
     }
+
+
 }
