@@ -24,7 +24,7 @@ public class Main {
             System.out.println("0 - Sair");
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            scanner.nextLine(); 
 
             switch (opcao) {
                 case 1:
@@ -61,7 +61,7 @@ public class Main {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestaurante = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine(); 
                     if (escolhaRestaurante >= 1 && escolhaRestaurante <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurante - 1);
                         System.out.println("Informe o nome do prato:");
@@ -85,7 +85,7 @@ public class Main {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestauranteListarPratos = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine(); 
                     if (escolhaRestauranteListarPratos >= 1 && escolhaRestauranteListarPratos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPratos - 1);
                         restauranteSelecionado.listarPratos();
@@ -100,7 +100,7 @@ public class Main {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestaurantePedido = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine(); 
                     if (escolhaRestaurantePedido >= 1 && escolhaRestaurantePedido <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurantePedido - 1);
                         System.out.println("Informe o bairro de entrega:");
@@ -143,7 +143,7 @@ public class Main {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestauranteListarPedidos = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine(); 
                     if (escolhaRestauranteListarPedidos >= 1 && escolhaRestauranteListarPedidos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPedidos - 1);
                         restauranteSelecionado.listarPedidos();
