@@ -27,6 +27,8 @@ public class LojaRestaurante {
 
             int opcao = scanner.nextInt();
             scanner.nextLine();
+            scanner.nextLine(); 
+
 
             switch (opcao) {
                 case 1 -> {
@@ -55,6 +57,7 @@ public class LojaRestaurante {
                         System.out.println();
                     }
                 }
+
                 case 3 -> {
                     System.out.println("Escolha um restaurante para adicionar o prato:");
                     for (int i = 0; i < restaurantes.size(); i++) {
@@ -62,6 +65,8 @@ public class LojaRestaurante {
                     }
                     int escolhaRestaurante = scanner.nextInt();
                     scanner.nextLine();
+                    scanner.nextLine(); 
+
                     if (escolhaRestaurante >= 1 && escolhaRestaurante <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurante - 1);
                         System.out.println("Informe o nome do prato:");
@@ -78,12 +83,14 @@ public class LojaRestaurante {
                         System.out.println("Escolha inválida de restaurante.");
                     }
                 }
+
                 case 4 -> {
                     System.out.println("Escolha um restaurante para listar os pratos:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestauranteListarPratos = scanner.nextInt();
+                    scanner.nextLine();
                     scanner.nextLine();
                     if (escolhaRestauranteListarPratos >= 1 && escolhaRestauranteListarPratos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPratos - 1);
@@ -92,6 +99,7 @@ public class LojaRestaurante {
                         System.out.println("Escolha inválida de restaurante.");
                     }
                 }
+
                 case 5 -> {
                     System.out.println("Escolha um restaurante para fazer o pedido:");
                     for (int i = 0; i < restaurantes.size(); i++) {
@@ -99,6 +107,8 @@ public class LojaRestaurante {
                     }
                     int escolhaRestaurantePedido = scanner.nextInt();
                     scanner.nextLine();
+                    scanner.nextLine(); 
+
                     if (escolhaRestaurantePedido >= 1 && escolhaRestaurantePedido <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurantePedido - 1);
                         System.out.println("Informe o bairro de entrega:");
@@ -110,7 +120,6 @@ public class LojaRestaurante {
 
                         Pedido novoPedido = new Pedido(bairroEntrega, ruaEntrega, numeroEntrega, 0, restauranteSelecionado);
 
-                        // Adicionar o pedido ao restaurante
                         restauranteSelecionado.adicionarPedido(novoPedido);
 
                         System.out.println("Escolha os pratos para o pedido (digite 0 para finalizar):");
@@ -138,13 +147,14 @@ public class LojaRestaurante {
                         System.out.println("Escolha inválida de restaurante.");
                     }
                 }
+
                 case 6 -> {
                     System.out.println("Escolha um restaurante para listar os pedidos:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestauranteListarPedidos = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine(); 
                     if (escolhaRestauranteListarPedidos >= 1 && escolhaRestauranteListarPedidos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPedidos - 1);
                         restauranteSelecionado.listarPedidosRecebidos(); // Usar o novo método para listar pedidos
@@ -152,6 +162,7 @@ public class LojaRestaurante {
                         System.out.println("Escolha inválida de restaurante.");
                     }
                 }
+
                 case 7 -> {
                     System.out.println("Pedidos anteriores do cliente:");
                     for (Pedido pedidoAnterior : pedidosAnteriores) {
@@ -169,6 +180,7 @@ public class LojaRestaurante {
                         System.out.println("==============");
                     }
                 }
+
                 case 0 -> {
                     System.out.println("Saindo do sistema...");
                     scanner.close();
