@@ -6,7 +6,7 @@ import Aula04.Modelos.Restaurante;
 import Aula04.Modelos.Prato;
 import Aula04.Modelos.Pedido;
 
-public class Main {
+public class LojaRestaurante {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
