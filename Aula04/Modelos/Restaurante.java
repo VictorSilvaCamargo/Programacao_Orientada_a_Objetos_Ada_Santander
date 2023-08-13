@@ -8,9 +8,8 @@ public class Restaurante {
     private final String bairro;
     private final String rua;
     private final String numero;
-    private ArrayList<Prato> pratos = new ArrayList<>();
-    private ArrayList<Restaurante> restaurantesCadastrados = new ArrayList<>();
-    private ArrayList<Pedido> pedidosRecebidos = new ArrayList<>();
+    private final ArrayList<Prato> pratos = new ArrayList<>();
+    private final ArrayList<Pedido> pedidosRecebidos = new ArrayList<>();
 
     public Restaurante(String nomeRestaurante, String estado, String bairro, String rua, String numero) {
         this.nomeRestaurante = nomeRestaurante;
@@ -18,6 +17,7 @@ public class Restaurante {
         this.bairro = bairro;
         this.rua = rua;
         this.numero = numero;
+        ArrayList<Restaurante> restaurantesCadastrados = new ArrayList<>();
         restaurantesCadastrados.add(this);
     }
 
@@ -54,7 +54,8 @@ public class Restaurante {
         pedidosRecebidos.add(pedido);
     }
 
-    public void listarPedidos() {
+    public void listarPedidosRecebidos() {
+        System.out.println("Pedidos recebidos pelo restaurante " + nomeRestaurante + ":");
         for (Pedido pedido : pedidosRecebidos) {
             System.out.println("Bairro de entrega: " + pedido.getBairroEntrega());
             System.out.println("Rua de entrega: " + pedido.getRuaEntrega());
@@ -69,6 +70,7 @@ public class Restaurante {
             System.out.println("==============");
         }
     }
+
     public ArrayList<Prato> getPratos() {
         return pratos;
     }

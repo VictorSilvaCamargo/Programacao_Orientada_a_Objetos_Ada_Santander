@@ -3,7 +3,7 @@ package Aula04.Modelos;
 public class Prato {
     private final String nomePrato;
     private final String descricao;
-    private double valor;
+    private final double valor;
 
     public Prato(String nomePrato,String descricao, double valor){
         this.nomePrato=nomePrato;

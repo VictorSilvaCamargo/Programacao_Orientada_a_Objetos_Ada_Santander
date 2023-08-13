@@ -2,12 +2,12 @@ package Aula04.Modelos;
 import java.util.ArrayList;
 
 public class Pedido {
-    private String bairroEntrega;
-    private String ruaEntrega;
-    private String numeroEntrega;
+    private final String bairroEntrega;
+    private final String ruaEntrega;
+    private final String numeroEntrega;
     private double valorTotal;
-    private ArrayList<Prato> pratosPedidos = new ArrayList<>();
-    private Restaurante restaurante;
+    private final ArrayList<Prato> pratosPedidos = new ArrayList<>();
+    private final Restaurante restaurante;
 
     public Pedido(String bairroEntrega, String ruaEntrega, String numeroEntrega, double valorTotal, Restaurante restaurante) {
         this.bairroEntrega = bairroEntrega;
@@ -38,5 +38,9 @@ public class Pedido {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
 
 }

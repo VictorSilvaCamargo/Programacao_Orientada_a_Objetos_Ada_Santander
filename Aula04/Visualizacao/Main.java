@@ -11,6 +11,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Restaurante> restaurantes = new ArrayList<>();
         ArrayList<Pedido> pedidosAnteriores = new ArrayList<>();
+        ArrayList<Pedido> pedidosRecebidos = new ArrayList<>();
+
 
         while (true) {
             System.out.println("Escolha uma opção:");
@@ -24,10 +26,10 @@ public class Main {
             System.out.println("0 - Sair");
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            scanner.nextLine();
 
             switch (opcao) {
-                case 1:
+                case 1 -> {
                     System.out.println("Informe o nome do restaurante:");
                     String nomeRestaurante = scanner.nextLine();
                     System.out.println("Informe o estado do restaurante:");
@@ -41,9 +43,8 @@ public class Main {
                     Restaurante novoRestaurante = new Restaurante(nomeRestaurante, estado, bairro, rua, numero);
                     restaurantes.add(novoRestaurante);
                     System.out.println("Restaurante cadastrado com sucesso!");
-                    break;
-
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Lista de Restaurantes:");
                     for (Restaurante r : restaurantes) {
                         System.out.println("Nome: " + r.getNomeRestaurante());
@@ -53,15 +54,14 @@ public class Main {
                         System.out.println("Número: " + r.getNumero());
                         System.out.println();
                     }
-                    break;
-
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Escolha um restaurante para adicionar o prato:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestaurante = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine();
                     if (escolhaRestaurante >= 1 && escolhaRestaurante <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurante - 1);
                         System.out.println("Informe o nome do prato:");
@@ -77,30 +77,28 @@ public class Main {
                     } else {
                         System.out.println("Escolha inválida de restaurante.");
                     }
-                    break;
-
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Escolha um restaurante para listar os pratos:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestauranteListarPratos = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine();
                     if (escolhaRestauranteListarPratos >= 1 && escolhaRestauranteListarPratos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPratos - 1);
                         restauranteSelecionado.listarPratos();
                     } else {
                         System.out.println("Escolha inválida de restaurante.");
                     }
-                    break;
-
-                case 5:
+                }
+                case 5 -> {
                     System.out.println("Escolha um restaurante para fazer o pedido:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
                     }
                     int escolhaRestaurantePedido = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer
+                    scanner.nextLine();
                     if (escolhaRestaurantePedido >= 1 && escolhaRestaurantePedido <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestaurantePedido - 1);
                         System.out.println("Informe o bairro de entrega:");
@@ -110,8 +108,10 @@ public class Main {
                         System.out.println("Informe o número de entrega:");
                         String numeroEntrega = scanner.nextLine();
 
-                        Pedido novoPedido = new Pedido(bairroEntrega, ruaEntrega, numeroEntrega, 0,
-                                restauranteSelecionado);
+                        Pedido novoPedido = new Pedido(bairroEntrega, ruaEntrega, numeroEntrega, 0, restauranteSelecionado);
+
+                        // Adicionar o pedido ao restaurante
+                        restauranteSelecionado.adicionarPedido(novoPedido);
 
                         System.out.println("Escolha os pratos para o pedido (digite 0 para finalizar):");
                         while (true) {
@@ -132,12 +132,13 @@ public class Main {
 
                         pedidosAnteriores.add(novoPedido);
                         System.out.println("Pedido realizado com sucesso!");
+                        pedidosRecebidos.add(novoPedido);
+
                     } else {
                         System.out.println("Escolha inválida de restaurante.");
                     }
-                    break;
-
-                case 6:
+                }
+                case 6 -> {
                     System.out.println("Escolha um restaurante para listar os pedidos:");
                     for (int i = 0; i < restaurantes.size(); i++) {
                         System.out.println((i + 1) + " - " + restaurantes.get(i).getNomeRestaurante());
@@ -146,19 +147,34 @@ public class Main {
                     scanner.nextLine(); // Limpar o buffer
                     if (escolhaRestauranteListarPedidos >= 1 && escolhaRestauranteListarPedidos <= restaurantes.size()) {
                         Restaurante restauranteSelecionado = restaurantes.get(escolhaRestauranteListarPedidos - 1);
-                        restauranteSelecionado.listarPedidos();
+                        restauranteSelecionado.listarPedidosRecebidos(); // Usar o novo método para listar pedidos
                     } else {
                         System.out.println("Escolha inválida de restaurante.");
                     }
-                    break;
+                }
+                case 7 -> {
+                    System.out.println("Pedidos anteriores do cliente:");
+                    for (Pedido pedidoAnterior : pedidosAnteriores) {
+                        System.out.println("Restaurante: " + pedidoAnterior.getRestaurante().getNomeRestaurante());
+                        System.out.println("Bairro de entrega: " + pedidoAnterior.getBairroEntrega());
+                        System.out.println("Rua de entrega: " + pedidoAnterior.getRuaEntrega());
+                        System.out.println("Número de entrega: " + pedidoAnterior.getNumeroEntrega());
+                        System.out.println("Valor total: " + pedidoAnterior.getValorTotal());
 
-                case 0:
+                        System.out.println("Pratos pedidos:");
+                        for (Prato prato : pedidoAnterior.getPratosPedidos()) {
+                            System.out.println("- " + prato.getNomePrato() + " (" + prato.getValor() + ")");
+                        }
+
+                        System.out.println("==============");
+                    }
+                }
+                case 0 -> {
                     System.out.println("Saindo do sistema...");
                     scanner.close();
                     return;
-
-                default:
-                    System.out.println("Opção inválida. Escolha uma opção válida.");
+                }
+                default -> System.out.println("Opção inválida. Escolha uma opção válida.");
             }
         }
     }
